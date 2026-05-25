@@ -1,6 +1,11 @@
 <?php
 // dsr/index.php
-// Main router already handled DB connection and functions
+if (!defined('BASE_URL')) {
+    session_start();
+    require_once __DIR__ . '/../config/database.php';
+    require_once __DIR__ . '/../config/functions.php';
+}
+
 $route = $_GET['route'] ?? 'dashboard';
 $action = $route; // simple routing
 
