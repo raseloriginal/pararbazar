@@ -54,7 +54,7 @@ if ($segments[0] === 'api') {
 }
 
 // Frontend Customer Routes
-$allowed_customer_pages = ['home', 'profile', 'orders', 'checkout'];
+$allowed_customer_pages = ['home', 'profile', 'orders', 'checkout', 'order-details'];
 if (in_array($segments[0], $allowed_customer_pages)) {
     require_once __DIR__ . "/views/customer/{$segments[0]}.php";
 } else {

@@ -38,7 +38,7 @@
                     </div>
                     <div class="text-sm text-gray-600 flex justify-between items-center">
                         <span><?= date('M d, Y', strtotime($order['created_at'])) ?></span>
-                        <a href="#" class="text-green-600 font-semibold text-xs">View Details</a>
+                        <a href="<?= BASE_URL ?>order-details?id=<?= $order['id'] ?>" class="text-green-600 font-semibold text-xs">View Details</a>
                     </div>
                 </div>
                 <?php
