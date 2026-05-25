@@ -1,5 +1,4 @@
 RewriteEngine On
-RewriteBase /pararbazar/
 
 # Redirect trailing slashes
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -4,7 +4,7 @@ require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/config/functions.php';
 
 $request_uri = $_SERVER['REQUEST_URI'];
-$base_path = '/pararbazar';
+$base_path = defined('BASE_URL') ? rtrim(BASE_URL, '/') : '/pararbazar';
 $path = str_replace($base_path, '', $request_uri);
 $path = parse_url($path, PHP_URL_PATH);
 $path = trim($path, '/');
