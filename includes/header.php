@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Parar Bazar</title>
+    <link rel="icon" href="<?= BASE_URL ?>images/icon.png" type="image/png">
     <link rel="manifest" href="<?= BASE_URL ?>manifest.json">
     <meta name="theme-color" content="#16a34a">
     <!-- Tailwind CSS -->
@@ -47,9 +48,7 @@
     <header class="bg-white sticky top-0 z-40 soft-shadow">
         <div class="px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-green-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">
-                    P
-                </div>
+                <img src="<?= BASE_URL ?>images/icon.png" alt="Parar Bazar Logo" class="w-8 h-8 rounded-lg object-contain">
                 <h1 class="text-xl font-bold text-gray-800">Parar Bazar</h1>
             </div>
             

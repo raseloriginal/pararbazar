@@ -1,7 +1,7 @@
 <div class="h-screen flex flex-col justify-center bg-slate-900 text-white relative">
     <div class="text-center mb-10">
-        <div class="w-16 h-16 bg-blue-500 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg shadow-blue-500/30">
-            <i class="fa-solid fa-motorcycle text-3xl"></i>
+        <div class="w-16 h-16 mx-auto mb-4">
+            <img src="<?= BASE_URL ?>images/icon.png" alt="Parar Bazar Logo" class="w-full h-full object-contain rounded-2xl shadow-lg shadow-blue-500/30">
         </div>
         <h1 class="text-2xl font-bold tracking-tight">Rider Login</h1>
         <p class="text-slate-400 text-sm mt-1">Enter your phone number</p>

@@ -24,6 +24,7 @@ if ($action === 'api') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Parar Bazar</title>
+    <link rel="icon" href="<?= BASE_URL ?>images/icon.png" type="image/png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -39,7 +40,7 @@ if ($action === 'api') {
     <!-- Sidebar -->
     <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col transition-all">
         <div class="h-16 flex items-center px-6 bg-slate-950 font-bold text-white text-lg tracking-wider">
-            <i class="fa-solid fa-layer-group mr-2 text-green-500"></i> PararBazar
+            <img src="<?= BASE_URL ?>images/icon.png" alt="Logo" class="w-8 h-8 mr-2 rounded object-contain"> PararBazar
         </div>
         <nav class="flex-1 overflow-y-auto py-4 space-y-1">
             <a href="<?= BASE_URL ?>admin/dashboard" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'dashboard' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">

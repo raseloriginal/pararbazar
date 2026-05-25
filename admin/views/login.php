@@ -1,8 +1,8 @@
 <div class="w-full h-full flex items-center justify-center bg-gray-50">
     <div class="bg-white p-10 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 mb-4 shadow-inner">
-                <i class="fa-solid fa-lock text-2xl"></i>
+            <div class="inline-flex items-center justify-center w-16 h-16 mb-4">
+                <img src="<?= BASE_URL ?>images/icon.png" alt="Parar Bazar Logo" class="w-full h-full object-contain rounded-xl">
             </div>
             <h2 class="text-2xl font-bold text-gray-800">Admin Login</h2>
             <p class="text-gray-500 text-sm mt-1">Enter your credentials to access the dashboard</p>
