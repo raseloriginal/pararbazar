@@ -84,48 +84,51 @@
         }
     }
 
+    function renderCartDrawerItems(cart) {
+        const container = $('#cartItemsContainer');
+        
+        if (cart.total_items === 0) {
+            container.html('<div class="text-center text-gray-500 py-10"><i class="fa-solid fa-cart-shopping text-4xl mb-3 text-gray-300"></i><p>Your cart is empty</p></div>');
+            return;
+        }
+        
+        let html = '';
+        for(let id in cart.items) {
+            let item = cart.items[id];
+            let imgPath = item.image ? item.image : 'https://placehold.co/100x100?text=No+Image';
+            html += `
+                <div class="flex gap-4 items-center premium-card p-3" data-id="${id}">
+                    <img src="${imgPath}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
+                    <div class="flex-grow">
+                        <h3 class="font-semibold text-gray-800">${item.name}</h3>
+                        <p class="text-green-600 font-bold">৳${item.price}</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-100 rounded-lg p-1">
+                        <button class="drawer-qty-btn decrease w-8 h-8 flex items-center justify-center text-gray-600 rounded-md bg-white shadow-sm hover:bg-gray-50 transition" data-id="${id}">
+                            <i class="fa-solid ${item.quantity === 1 ? 'fa-trash text-red-500' : 'fa-minus'}"></i>
+                        </button>
+                        <span class="font-semibold w-4 text-center qty-span">${item.quantity}</span>
+                        <button class="drawer-qty-btn increase w-8 h-8 flex items-center justify-center text-gray-600 rounded-md bg-white shadow-sm hover:bg-gray-50 transition" data-id="${id}">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+        container.html(html);
+        
+        // Update totals
+        $('#drawerSubtotal').text('৳' + cart.total_amount);
+        // Assuming fixed delivery fee of 30 for now
+        let delivery = cart.total_amount > 0 ? 30 : 0;
+        $('#drawerDelivery').text('৳' + delivery);
+        $('#drawerGrandTotal').text('৳' + (parseFloat(cart.total_amount) + delivery));
+    }
+
     function loadCartItems() {
         $.get('<?= BASE_URL ?>api/cart?action=get', function(response) {
             if(response.status === 'success') {
-                const cart = response.data;
-                const container = $('#cartItemsContainer');
-                
-                if (cart.total_items === 0) {
-                    container.html('<div class="text-center text-gray-500 py-10"><i class="fa-solid fa-cart-shopping text-4xl mb-3 text-gray-300"></i><p>Your cart is empty</p></div>');
-                    return;
-                }
-                
-                let html = '';
-                for(let id in cart.items) {
-                    let item = cart.items[id];
-                    let imgPath = item.image ? item.image : 'https://placehold.co/100x100?text=No+Image';
-                    html += `
-                        <div class="flex gap-4 items-center premium-card p-3" data-id="${id}">
-                            <img src="${imgPath}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
-                            <div class="flex-grow">
-                                <h3 class="font-semibold text-gray-800">${item.name}</h3>
-                                <p class="text-green-600 font-bold">৳${item.price}</p>
-                            </div>
-                            <div class="flex items-center gap-3 bg-gray-100 rounded-lg p-1">
-                                <button class="drawer-qty-btn decrease w-8 h-8 flex items-center justify-center text-gray-600 rounded-md bg-white shadow-sm" data-id="${id}">
-                                    <i class="fa-solid ${item.quantity === 1 ? 'fa-trash text-red-500' : 'fa-minus'}"></i>
-                                </button>
-                                <span class="font-semibold w-4 text-center">${item.quantity}</span>
-                                <button class="drawer-qty-btn increase w-8 h-8 flex items-center justify-center text-gray-600 rounded-md bg-white shadow-sm" data-id="${id}">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                }
-                container.html(html);
-                
-                // Update totals
-                $('#drawerSubtotal').text('৳' + cart.total_amount);
-                // Assuming fixed delivery fee of 30 for now
-                let delivery = cart.total_amount > 0 ? 30 : 0;
-                $('#drawerDelivery').text('৳' + delivery);
-                $('#drawerGrandTotal').text('৳' + (parseFloat(cart.total_amount) + delivery));
+                renderCartDrawerItems(response.data);
             }
         });
     }
@@ -134,14 +137,22 @@
         // Handle drawer quantity buttons
         $(document).on('click', '.drawer-qty-btn.increase', function() {
             let id = $(this).data('id');
-            let currentQty = parseInt($(this).siblings('span').text());
-            updateCartFromDrawer(id, currentQty + 1);
+            let span = $(this).siblings('.qty-span');
+            let currentQty = parseInt(span.text());
+            let newQty = currentQty + 1;
+            span.text(newQty); // Optimistic UI update
+            updateCartFromDrawer(id, newQty);
         });
 
         $(document).on('click', '.drawer-qty-btn.decrease', function() {
             let id = $(this).data('id');
-            let currentQty = parseInt($(this).siblings('span').text());
-            updateCartFromDrawer(id, currentQty - 1);
+            let span = $(this).siblings('.qty-span');
+            let currentQty = parseInt(span.text());
+            let newQty = currentQty - 1;
+            if (newQty >= 0) {
+                span.text(newQty); // Optimistic UI update
+                updateCartFromDrawer(id, newQty);
+            }
         });
     });
 
@@ -169,8 +180,8 @@
                         productCard.find('.qty-value').text(quantity);
                     }
                 }
-                // Reload drawer items
-                loadCartItems();
+                // Re-render drawer items directly from response instead of making another AJAX call
+                renderCartDrawerItems(response.data);
             }
         });
     }
