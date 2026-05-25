@@ -52,6 +52,7 @@ if ($action === 'api') {
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="pb-6">
 
@@ -64,7 +65,6 @@ if ($action === 'api') {
     }
 ?>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('<?= BASE_URL ?>dsr/sw.js');
