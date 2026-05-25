@@ -38,7 +38,7 @@
                     </div>
                     <div class="text-sm text-gray-600 flex justify-between items-center">
                         <span><?= date('M d, Y', strtotime($order['created_at'])) ?></span>
-                        <a href="<?= BASE_URL ?>order-details?id=<?= $order['id'] ?>" class="text-green-600 font-semibold text-xs">View Details</a>
+                        <button onclick="viewOrderDetails(<?= $order['id'] ?>)" class="text-green-600 font-semibold text-xs">View Details</button>
                     </div>
                 </div>
                 <?php
@@ -47,5 +47,61 @@
     }
     ?>
 </div>
+
+<!-- Order Details Modal (Bottom Sheet style) -->
+<div id="orderDetailsOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden transition-opacity opacity-0" onclick="closeOrderDetails()"></div>
+<div id="orderDetailsModal" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl z-[60] transform translate-y-full transition-transform duration-300 max-h-[90vh] flex flex-col">
+    <div class="w-full flex justify-center pt-3 pb-1 cursor-pointer" onclick="closeOrderDetails()">
+        <div class="w-12 h-1.5 bg-gray-300 rounded-full"></div>
+    </div>
+    <div class="px-4 py-3 flex justify-between items-center border-b">
+        <h2 class="text-xl font-bold text-gray-800" id="modalOrderTitle">Order Details</h2>
+        <button onclick="closeOrderDetails()" class="text-gray-400 hover:text-gray-600">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+    </div>
+    <div id="modalOrderContent" class="p-4 overflow-y-auto flex-grow space-y-4 pb-10">
+        <!-- Content injected via JS -->
+    </div>
+</div>
+
+<script>
+function viewOrderDetails(orderId) {
+    const overlay = document.getElementById('orderDetailsOverlay');
+    const modal = document.getElementById('orderDetailsModal');
+    
+    $('#modalOrderTitle').text('Order #' + String(orderId).padStart(5, '0'));
+    $('#modalOrderContent').html('<div class="text-center py-10"><i class="fa-solid fa-spinner fa-spin text-3xl text-green-600"></i></div>');
+    
+    // Open modal
+    overlay.classList.remove('hidden');
+    setTimeout(() => {
+        overlay.classList.remove('opacity-0');
+        modal.classList.remove('translate-y-full');
+    }, 10);
+
+    // Fetch data
+    $.get('<?= BASE_URL ?>api/order_details?id=' + orderId, function(response) {
+        if(response && response.status === 'success') {
+            $('#modalOrderContent').html(response.html);
+        } else {
+            $('#modalOrderContent').html('<div class="text-center text-red-500 py-10">' + (response ? response.message : 'Failed to load data.') + '</div>');
+        }
+    }).fail(function() {
+        $('#modalOrderContent').html('<div class="text-center text-red-500 py-10">Error connecting to server.</div>');
+    });
+}
+
+function closeOrderDetails() {
+    const overlay = document.getElementById('orderDetailsOverlay');
+    const modal = document.getElementById('orderDetailsModal');
+    
+    overlay.classList.add('opacity-0');
+    modal.classList.add('translate-y-full');
+    setTimeout(() => {
+        overlay.classList.add('hidden');
+    }, 300);
+}
+</script>
 
 <?php require_once __DIR__ . '/../../includes/footer.php'; ?>
