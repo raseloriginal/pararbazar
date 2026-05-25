@@ -1,10 +1,19 @@
 <?php
 // config/database.php
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'pararbazar_db');
+$is_local = in_array($_SERVER['HTTP_HOST'] ?? '', ['localhost', '127.0.0.1', '::1']);
+
+if ($is_local) {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'pararbazar_db');
+} else {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'rasedwwq_pararbazar');
+    define('DB_PASS', 'jqlO)87oJ^UB');
+    define('DB_NAME', 'rasedwwq_pararbazar');
+}
 
 function getDB() {
     static $pdo;
