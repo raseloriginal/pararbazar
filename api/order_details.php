@@ -18,7 +18,7 @@ $pdo = getDB();
 $stmt = $pdo->prepare("
     SELECT o.*, ds.start_time, ds.end_time 
     FROM orders o 
-    LEFT JOIN delivery_slots ds ON o.delivery_slot_id = ds.id 
+    LEFT JOIN delivery_slots ds ON o.slot_id = ds.id 
     WHERE o.id = ? AND o.user_id = ?
 ");
 $stmt->execute([$order_id, $user_id]);
