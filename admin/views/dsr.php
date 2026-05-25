@@ -81,7 +81,7 @@ $dsrs = $stmt->fetchAll();
 $(document).ready(function() {
     $('#addDSRForm').submit(function(e) {
         e.preventDefault();
-        $.post('/pararbazar/admin/api', $(this).serialize() + '&action=add_dsr', function(res) {
+        $.post('<?= BASE_URL ?>admin/api', $(this).serialize() + '&action=add_dsr', function(res) {
             if(res.status === 'success') {
                 window.location.reload();
             } else {
@@ -93,7 +93,7 @@ $(document).ready(function() {
 
 function deleteDSR(id) {
     if(confirm('Are you sure you want to delete this DSR?')) {
-        $.post('/pararbazar/admin/api', {action: 'delete_dsr', id: id}, function(res) {
+        $.post('<?= BASE_URL ?>admin/api', {action: 'delete_dsr', id: id}, function(res) {
             if(res.status === 'success') {
                 window.location.reload();
             } else {

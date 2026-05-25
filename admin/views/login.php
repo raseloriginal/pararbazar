@@ -39,12 +39,12 @@ $(document).ready(function() {
         btn.html('<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...');
         
         $.ajax({
-            url: '/pararbazar/admin/api',
+            url: '<?= BASE_URL ?>admin/api',
             type: 'POST',
             data: $(this).serialize() + '&action=login',
             success: function(res) {
                 if(res.status === 'success') {
-                    window.location.href = '/pararbazar/admin/dashboard';
+                    window.location.href = '<?= BASE_URL ?>admin/dashboard';
                 } else {
                     alert(res.message);
                     btn.html(originalText);

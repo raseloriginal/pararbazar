@@ -57,12 +57,12 @@ $(document).ready(function() {
         btn.html('<i class="fa-solid fa-spinner fa-spin"></i>');
 
         $.ajax({
-            url: '/pararbazar/dsr/api',
+            url: '<?= BASE_URL ?>dsr/api',
             type: 'POST',
             data: { action: 'login', phone: phone },
             success: function(res) {
                 if(res.status === 'success') {
-                    window.location.href = '/pararbazar/dsr/dashboard';
+                    window.location.href = '<?= BASE_URL ?>dsr/dashboard';
                 } else {
                     alert(res.message);
                     btn.html('<i class="fa-solid fa-arrow-right"></i>');

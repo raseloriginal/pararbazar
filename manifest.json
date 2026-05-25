@@ -1,7 +1,7 @@
 {
     "name": "Parar Bazar",
     "short_name": "Parar Bazar",
-    "start_url": "/pararbazar/home",
+    "start_url": "./home",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#16a34a",

@@ -2,7 +2,7 @@
 
 <div class="px-4 py-4 bg-white border-b sticky top-[56px] z-30">
     <div class="flex items-center gap-3">
-        <a href="/pararbazar/home" class="text-gray-600"><i class="fa-solid fa-arrow-left"></i></a>
+        <a href="<?= BASE_URL ?>home" class="text-gray-600"><i class="fa-solid fa-arrow-left"></i></a>
         <h2 class="text-lg font-bold text-gray-800">My Orders</h2>
     </div>
 </div>

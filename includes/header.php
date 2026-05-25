@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Parar Bazar</title>
-    <link rel="manifest" href="/pararbazar/manifest.json">
+    <link rel="manifest" href="<?= BASE_URL ?>manifest.json">
     <meta name="theme-color" content="#16a34a">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -57,7 +57,7 @@
                 <button id="searchBtn" class="text-xl">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-                <a href="/pararbazar/profile" class="text-xl">
+                <a href="<?= BASE_URL ?>profile" class="text-xl">
                     <i class="fa-regular fa-circle-user"></i>
                 </a>
             </div>

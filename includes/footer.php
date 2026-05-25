@@ -56,7 +56,7 @@
 
             function updateCart(productId, quantity, name = null, price = null, image = null) {
                 $.ajax({
-                    url: '/pararbazar/api/cart',
+                    url: '<?= BASE_URL ?>api/cart',
                     type: 'POST',
                     data: {
                         action: 'update',
@@ -90,7 +90,7 @@
             };
             
             // Initial cart fetch
-            $.get('/pararbazar/api/cart?action=get', function(response) {
+            $.get('<?= BASE_URL ?>api/cart?action=get', function(response) {
                 if(response.status === 'success') {
                     window.updateFloatingCart(response.data);
                     // Also update any quantity controls on the page to match current cart state
@@ -109,7 +109,7 @@
 
             // Register Service Worker for PWA
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/pararbazar/service-worker.js')
+                navigator.serviceWorker.register('<?= BASE_URL ?>service-worker.js')
                 .then(function(registration) {
                     console.log('ServiceWorker registration successful');
                 }).catch(function(err) {

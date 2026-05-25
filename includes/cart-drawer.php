@@ -54,7 +54,7 @@
             <span id="drawerGrandTotal" class="font-bold text-xl text-green-600">৳0.00</span>
         </div>
         
-        <a href="/pararbazar/checkout" class="block w-full bg-green-600 text-white text-center font-bold py-3 rounded-xl shadow-lg hover:bg-green-700 transition-colors">
+        <a href="<?= BASE_URL ?>checkout" class="block w-full bg-green-600 text-white text-center font-bold py-3 rounded-xl shadow-lg hover:bg-green-700 transition-colors">
             Proceed to Checkout
         </a>
     </div>
@@ -85,7 +85,7 @@
     }
 
     function loadCartItems() {
-        $.get('/pararbazar/api/cart?action=get', function(response) {
+        $.get('<?= BASE_URL ?>api/cart?action=get', function(response) {
             if(response.status === 'success') {
                 const cart = response.data;
                 const container = $('#cartItemsContainer');
@@ -147,7 +147,7 @@
 
     function updateCartFromDrawer(productId, quantity) {
         $.ajax({
-            url: '/pararbazar/api/cart',
+            url: '<?= BASE_URL ?>api/cart',
             type: 'POST',
             data: {
                 action: 'update',

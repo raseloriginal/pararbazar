@@ -1,7 +1,7 @@
 const CACHE_NAME = 'pararbazar-v1';
 const ASSETS_TO_CACHE = [
-    '/pararbazar/home',
-    '/pararbazar/manifest.json'
+    './home',
+    './manifest.json'
 ];
 
 self.addEventListener('install', event => {

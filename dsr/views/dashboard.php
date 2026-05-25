@@ -92,10 +92,10 @@ foreach($slots as $s) {
 
         <?php if(!$is_completed): ?>
         <div class="flex gap-3">
-            <a href="/pararbazar/dsr/collection?slot_id=<?= $slot['id'] ?>" class="flex-1 bg-slate-800 text-white text-center py-2.5 rounded-xl font-semibold text-sm hover:bg-slate-700 transition shadow-sm">
+            <a href="<?= BASE_URL ?>dsr/collection?slot_id=<?= $slot['id'] ?>" class="flex-1 bg-slate-800 text-white text-center py-2.5 rounded-xl font-semibold text-sm hover:bg-slate-700 transition shadow-sm">
                 <i class="fa-solid fa-box-open mr-1"></i> Collect
             </a>
-            <a href="/pararbazar/dsr/delivery?slot_id=<?= $slot['id'] ?>" class="flex-1 bg-blue-600 text-white text-center py-2.5 rounded-xl font-semibold text-sm hover:bg-blue-700 transition shadow-sm">
+            <a href="<?= BASE_URL ?>dsr/delivery?slot_id=<?= $slot['id'] ?>" class="flex-1 bg-blue-600 text-white text-center py-2.5 rounded-xl font-semibold text-sm hover:bg-blue-700 transition shadow-sm">
                 <i class="fa-solid fa-motorcycle mr-1"></i> Deliver
             </a>
         </div>
@@ -108,8 +108,8 @@ foreach($slots as $s) {
 $(document).ready(function() {
     $('#logoutBtn').click(function() {
         if(confirm('Are you sure you want to log out?')) {
-            $.post('/pararbazar/dsr/api', { action: 'logout' }, function() {
-                window.location.href = '/pararbazar/dsr/login';
+            $.post('<?= BASE_URL ?>dsr/api', { action: 'logout' }, function() {
+                window.location.href = '<?= BASE_URL ?>dsr/login';
             });
         }
     });

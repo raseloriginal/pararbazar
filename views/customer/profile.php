@@ -47,7 +47,7 @@ $recentOrders = $orderStmt->fetchAll();
     <div>
         <div class="flex justify-between items-center mb-3">
             <h3 class="text-sm font-semibold text-gray-800">Recent Orders</h3>
-            <a href="/pararbazar/orders" class="text-xs font-medium text-green-600">View All</a>
+            <a href="<?= BASE_URL ?>orders" class="text-xs font-medium text-green-600">View All</a>
         </div>
         
         <div class="space-y-3">
@@ -78,7 +78,7 @@ $recentOrders = $orderStmt->fetchAll();
 
     <!-- Actions -->
     <div class="pt-4">
-        <a href="/pararbazar/api/auth?action=logout" class="block w-full text-center premium-card py-3 text-red-500 font-bold hover:bg-red-50 transition-colors">
+        <a href="<?= BASE_URL ?>api/auth?action=logout" class="block w-full text-center premium-card py-3 text-red-500 font-bold hover:bg-red-50 transition-colors">
             Logout
         </a>
     </div>

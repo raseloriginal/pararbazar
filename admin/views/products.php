@@ -37,7 +37,7 @@ $categories = $catStmt->fetchAll();
                         <td class="px-4 py-3 flex items-center gap-3">
                             <div class="w-10 h-10 rounded object-cover bg-gray-100 overflow-hidden flex items-center justify-center">
                                 <?php if($p['image']): ?>
-                                    <img src="/pararbazar/assets/uploads/<?= htmlspecialchars($p['image']) ?>" class="w-full h-full object-cover">
+                                    <img src="<?= BASE_URL ?>assets/uploads/<?= htmlspecialchars($p['image']) ?>" class="w-full h-full object-cover">
                                 <?php else: ?>
                                     <i class="fa-solid fa-image text-gray-400"></i>
                                 <?php endif; ?>
@@ -129,7 +129,7 @@ $(document).ready(function() {
         formData.append('action', 'add_product');
 
         $.ajax({
-            url: '/pararbazar/admin/api',
+            url: '<?= BASE_URL ?>admin/api',
             type: 'POST',
             data: formData,
             contentType: false,
@@ -147,7 +147,7 @@ $(document).ready(function() {
 
 function deleteProduct(id) {
     if(confirm('Are you sure you want to delete this product?')) {
-        $.post('/pararbazar/admin/api', {action: 'delete_product', id: id}, function(res) {
+        $.post('<?= BASE_URL ?>admin/api', {action: 'delete_product', id: id}, function(res) {
             if(res.status === 'success') {
                 window.location.reload();
             } else {

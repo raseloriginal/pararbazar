@@ -31,7 +31,7 @@ if ($action === 'api') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/pararbazar/dsr/manifest.json">
+    <link rel="manifest" href="<?= BASE_URL ?>dsr/manifest.json">
     <meta name="theme-color" content="#1e293b">
     
     <style>
@@ -61,7 +61,7 @@ if ($action === 'api') {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/pararbazar/dsr/sw.js');
+            navigator.serviceWorker.register('<?= BASE_URL ?>dsr/sw.js');
         }
     </script>
 </body>

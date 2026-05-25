@@ -87,7 +87,7 @@ $dsrs = $dsrStmt->fetchAll();
 
 <script>
 function assignDSR(orderId, dsrId) {
-    $.post('/pararbazar/admin/api', {
+    $.post('<?= BASE_URL ?>admin/api', {
         action: 'assign_dsr',
         order_id: orderId,
         dsr_id: dsrId

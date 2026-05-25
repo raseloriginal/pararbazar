@@ -41,7 +41,7 @@ foreach($items as $item) {
 ?>
 <div class="bg-slate-900 text-white px-4 py-4 sticky top-0 z-30 flex items-center justify-between shadow-md">
     <div class="flex items-center gap-3">
-        <a href="/pararbazar/dsr/dashboard" class="text-slate-300 hover:text-white transition"><i class="fa-solid fa-arrow-left text-lg"></i></a>
+        <a href="<?= BASE_URL ?>dsr/dashboard" class="text-slate-300 hover:text-white transition"><i class="fa-solid fa-arrow-left text-lg"></i></a>
         <div>
             <h2 class="text-lg font-bold leading-tight">Collection</h2>
             <p class="text-slate-400 text-xs">Slot <?= $slot ? date('h:i A', strtotime($slot['start_time'])) : '' ?></p>
@@ -131,7 +131,7 @@ $(document).ready(function() {
         $(this).html('<i class="fa-solid fa-spinner fa-spin"></i> Processing...');
         setTimeout(() => {
             alert('Collection marked as completed! You can now start deliveries.');
-            window.location.href = '/pararbazar/dsr/dashboard';
+            window.location.href = '<?= BASE_URL ?>dsr/dashboard';
         }, 800);
     });
 });

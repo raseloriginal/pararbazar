@@ -8,11 +8,13 @@ if ($is_local) {
     define('DB_USER', 'root');
     define('DB_PASS', '');
     define('DB_NAME', 'pararbazar_db');
+    define('BASE_URL', '/pararbazar/');
 } else {
     define('DB_HOST', 'localhost');
     define('DB_USER', 'rasedwwq_pararbazar');
     define('DB_PASS', 'jqlO)87oJ^UB');
     define('DB_NAME', 'rasedwwq_pararbazar');
+    define('BASE_URL', '/');
 }
 
 function getDB() {

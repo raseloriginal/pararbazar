@@ -88,7 +88,7 @@ $topProducts = $topStmt->fetchAll();
     <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <div class="flex justify-between items-center mb-6">
             <h3 class="font-bold text-gray-800 text-lg">Recent Orders</h3>
-            <a href="/pararbazar/admin/orders" class="text-sm text-green-600 font-medium hover:underline">View All</a>
+            <a href="<?= BASE_URL ?>admin/orders" class="text-sm text-green-600 font-medium hover:underline">View All</a>
         </div>
         
         <div class="overflow-x-auto">

@@ -3,7 +3,7 @@
 // Calculate totals from session
 $cart = $_SESSION['cart'] ?? ['items' => [], 'total_items' => 0, 'total_amount' => 0];
 if ($cart['total_items'] === 0) {
-    echo "<div class='p-8 text-center text-gray-500'>Your cart is empty. <br><a href='/pararbazar/home' class='text-green-600 font-bold mt-4 inline-block'>Go back to shopping</a></div>";
+    echo "<div class='p-8 text-center text-gray-500'>Your cart is empty. <br><a href='<?= BASE_URL ?>home' class='text-green-600 font-bold mt-4 inline-block'>Go back to shopping</a></div>";
     require_once __DIR__ . '/../../includes/footer.php';
     exit;
 }
@@ -19,7 +19,7 @@ $slots = $slotStmt->fetchAll();
 
 <div class="px-4 py-4 bg-white border-b sticky top-[56px] z-30">
     <div class="flex items-center gap-3">
-        <a href="/pararbazar/home" class="text-gray-600"><i class="fa-solid fa-arrow-left"></i></a>
+        <a href="<?= BASE_URL ?>home" class="text-gray-600"><i class="fa-solid fa-arrow-left"></i></a>
         <h2 class="text-lg font-bold text-gray-800">Checkout</h2>
     </div>
 </div>
@@ -112,13 +112,13 @@ $(document).ready(function() {
         btn.prop('disabled', true).text('Processing...');
 
         $.ajax({
-            url: '/pararbazar/api/checkout',
+            url: '<?= BASE_URL ?>api/checkout',
             type: 'POST',
             data: $(this).serialize(),
             success: function(response) {
                 if(response.status === 'success') {
                     alert('Order placed successfully! You are now logged in.');
-                    window.location.href = '/pararbazar/orders';
+                    window.location.href = '<?= BASE_URL ?>orders';
                 } else {
                     alert('Error: ' + response.message);
                     btn.prop('disabled', false).text('Place Order & Register');

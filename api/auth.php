@@ -6,7 +6,7 @@ $action = $_REQUEST['action'] ?? '';
 
 if ($action === 'logout') {
     session_destroy();
-    header("Location: /pararbazar/home");
+    redirect('/home');
     exit;
 }
 

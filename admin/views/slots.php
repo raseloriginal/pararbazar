@@ -94,7 +94,7 @@ $slots = $stmt->fetchAll();
 $(document).ready(function() {
     $('#addSlotForm').submit(function(e) {
         e.preventDefault();
-        $.post('/pararbazar/admin/api', $(this).serialize() + '&action=add_slot', function(res) {
+        $.post('<?= BASE_URL ?>admin/api', $(this).serialize() + '&action=add_slot', function(res) {
             if(res.status === 'success') {
                 window.location.reload();
             } else {
@@ -106,7 +106,7 @@ $(document).ready(function() {
 
 function deleteSlot(id) {
     if(confirm('Are you sure you want to delete this delivery slot?')) {
-        $.post('/pararbazar/admin/api', {action: 'delete_slot', id: id}, function(res) {
+        $.post('<?= BASE_URL ?>admin/api', {action: 'delete_slot', id: id}, function(res) {
             if(res.status === 'success') {
                 window.location.reload();
             } else {

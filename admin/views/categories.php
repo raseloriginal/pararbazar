@@ -84,7 +84,7 @@ $categories = $stmt->fetchAll();
 $(document).ready(function() {
     $('#addCategoryForm').submit(function(e) {
         e.preventDefault();
-        $.post('/pararbazar/admin/api', $(this).serialize() + '&action=add_category', function(res) {
+        $.post('<?= BASE_URL ?>admin/api', $(this).serialize() + '&action=add_category', function(res) {
             if(res.status === 'success') {
                 window.location.reload();
             } else {
@@ -96,7 +96,7 @@ $(document).ready(function() {
 
 function deleteCategory(id) {
     if(confirm('Are you sure you want to delete this category?')) {
-        $.post('/pararbazar/admin/api', {action: 'delete_category', id: id}, function(res) {
+        $.post('<?= BASE_URL ?>admin/api', {action: 'delete_category', id: id}, function(res) {
             if(res.status === 'success') {
                 window.location.reload();
             } else {

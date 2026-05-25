@@ -22,7 +22,7 @@ $orders = $stmt->fetchAll();
 ?>
 <div class="bg-blue-600 text-white px-4 py-4 sticky top-0 z-30 shadow-md">
     <div class="flex items-center gap-3">
-        <a href="/pararbazar/dsr/dashboard" class="text-blue-200 hover:text-white transition"><i class="fa-solid fa-arrow-left text-lg"></i></a>
+        <a href="<?= BASE_URL ?>dsr/dashboard" class="text-blue-200 hover:text-white transition"><i class="fa-solid fa-arrow-left text-lg"></i></a>
         <div>
             <h2 class="text-lg font-bold leading-tight">Deliveries</h2>
             <p class="text-blue-200 text-xs">
@@ -82,7 +82,7 @@ $orders = $stmt->fetchAll();
 <script>
 function updateOrderStatus(id, status) {
     if(confirm('Are you sure you want to mark this order as ' + status + '?')) {
-        $.post('/pararbazar/dsr/api', {
+        $.post('<?= BASE_URL ?>dsr/api', {
             action: 'update_order_status',
             order_id: id,
             status: status

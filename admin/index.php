@@ -42,22 +42,22 @@ if ($action === 'api') {
             <i class="fa-solid fa-layer-group mr-2 text-green-500"></i> PararBazar
         </div>
         <nav class="flex-1 overflow-y-auto py-4 space-y-1">
-            <a href="/pararbazar/admin/dashboard" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'dashboard' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
+            <a href="<?= BASE_URL ?>admin/dashboard" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'dashboard' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
                 <i class="fa-solid fa-chart-line w-6"></i> Dashboard
             </a>
-            <a href="/pararbazar/admin/orders" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'orders' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
+            <a href="<?= BASE_URL ?>admin/orders" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'orders' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
                 <i class="fa-solid fa-cart-shopping w-6"></i> Orders
             </a>
-            <a href="/pararbazar/admin/products" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'products' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
+            <a href="<?= BASE_URL ?>admin/products" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'products' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
                 <i class="fa-solid fa-box w-6"></i> Products
             </a>
-            <a href="/pararbazar/admin/categories" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'categories' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
+            <a href="<?= BASE_URL ?>admin/categories" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'categories' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
                 <i class="fa-solid fa-tags w-6"></i> Categories
             </a>
-            <a href="/pararbazar/admin/dsr" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'dsr' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
+            <a href="<?= BASE_URL ?>admin/dsr" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'dsr' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
                 <i class="fa-solid fa-motorcycle w-6"></i> DSR Staff
             </a>
-            <a href="/pararbazar/admin/slots" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'slots' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
+            <a href="<?= BASE_URL ?>admin/slots" class="flex items-center px-6 py-3 hover:bg-slate-800 hover:text-white <?= $action === 'slots' ? 'bg-slate-800 text-white border-l-4 border-green-500' : 'border-l-4 border-transparent' ?>">
                 <i class="fa-solid fa-clock w-6"></i> Delivery Slots
             </a>
         </nav>
@@ -100,8 +100,8 @@ if ($action === 'api') {
         $(document).ready(function() {
             $('#adminLogoutBtn').click(function() {
                 if(confirm('Logout from admin?')) {
-                    $.post('/pararbazar/admin/api', { action: 'logout' }, function() {
-                        window.location.href = '/pararbazar/admin/login';
+                    $.post('<?= BASE_URL ?>admin/api', { action: 'logout' }, function() {
+                        window.location.href = '<?= BASE_URL ?>admin/login';
                     });
                 }
             });

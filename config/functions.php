@@ -10,7 +10,7 @@ function isLoggedIn() {
 }
 
 function redirect($path) {
-    header("Location: /pararbazar/" . ltrim($path, '/'));
+    header("Location: " . BASE_URL . ltrim($path, '/'));
     exit;
 }
 
